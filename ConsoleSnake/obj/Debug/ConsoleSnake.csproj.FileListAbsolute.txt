@@ -1,0 +1,7 @@
+C:\Users\Mauro\Documents\C#Learning\ConsoleSnake\ConsoleSnake\bin\Debug\ConsoleSnake.exe.config
+C:\Users\Mauro\Documents\C#Learning\ConsoleSnake\ConsoleSnake\bin\Debug\ConsoleSnake.exe
+C:\Users\Mauro\Documents\C#Learning\ConsoleSnake\ConsoleSnake\bin\Debug\ConsoleSnake.pdb
+C:\Users\Mauro\Documents\C#Learning\ConsoleSnake\ConsoleSnake\obj\Debug\ConsoleSnake.csproj.AssemblyReference.cache
+C:\Users\Mauro\Documents\C#Learning\ConsoleSnake\ConsoleSnake\obj\Debug\ConsoleSnake.csproj.CoreCompileInputs.cache
+C:\Users\Mauro\Documents\C#Learning\ConsoleSnake\ConsoleSnake\obj\Debug\ConsoleSnake.exe
+C:\Users\Mauro\Documents\C#Learning\ConsoleSnake\ConsoleSnake\obj\Debug\ConsoleSnake.pdb
