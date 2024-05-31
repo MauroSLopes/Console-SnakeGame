@@ -109,12 +109,32 @@ namespace ConsoleSnake
                 case CanvasType.Food:
                     SnakeCharacter.Size.Insert(0, new Position(nextPos.Altura, nextPos.Largura));
                     canvasTypes[nextPos.Altura, nextPos.Largura] = CanvasType.Snake;
+                    CreateFood();
                     break;
                 case CanvasType.Snake:
-                    Console.Write(" ■");
+                    return;
                     break;
             }
             render.Render();
+        }
+
+        public void ChangeDirection(char key)
+        {
+            switch (key)
+            {
+                case 'a':
+                    SnakeCharacter.currentDirection = SnakeCharacter.Direction.left;
+                    break;
+                case 'w':
+                    SnakeCharacter.currentDirection = SnakeCharacter.Direction.up;
+                    break;
+                case 's':
+                    SnakeCharacter.currentDirection = SnakeCharacter.Direction.down;
+                    break;
+                case 'd':
+                    SnakeCharacter.currentDirection = SnakeCharacter.Direction.right;
+                    break;
+            }
         }
     }
 }

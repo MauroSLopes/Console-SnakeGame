@@ -30,10 +30,10 @@ namespace ConsoleSnake
                     switch (typeCanvas[i,j])
                     {
                         case CanvasType.Empty:
-                            Console.Write(" a");
+                            Console.Write(" #");
                             break;
                         case CanvasType.Food:
-                            Console.Write(" *");
+                            Console.Write(" @");
                             break;
                         case CanvasType.Snake:
                             Console.Write(" ■");

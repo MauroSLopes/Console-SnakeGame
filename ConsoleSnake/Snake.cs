@@ -17,7 +17,7 @@ namespace ConsoleSnake
         }
 
         public List<Position> Size { get; set; }
-        private Directions Direction { get; }
+        public Directions Direction { get; }
         public Position currentDirection { get; set; }
         
     }

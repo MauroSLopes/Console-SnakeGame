@@ -12,17 +12,18 @@ namespace ConsoleSnake
         static void Main(string[] args)
         {
             GameController SnakeGame = new GameController(15);
+
             Thread.Sleep(1000);
 
             while ( SnakeGame != null )
             {
-                Console.Clear();
-                SnakeGame.MoveSnake();
-                Thread.Sleep(1000);
-
-
+                while (!Console.KeyAvailable) {
+                    Console.Clear();
+                    SnakeGame.MoveSnake();
+                    Thread.Sleep(900);
+                }
+                SnakeGame.ChangeDirection(Console.ReadKey().KeyChar);
             }
-            Console.ReadLine();
         }
     }
 }
