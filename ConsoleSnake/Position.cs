@@ -16,5 +16,21 @@ namespace ConsoleSnake
 
         public int Altura { get; set; }
         public int Largura { get; set; }
+
+        public int OppositeHeigth
+        {
+            get
+            {
+                return -this.Altura;
+            }
+        }
+
+        public int OppositeWidth
+        {
+            get
+            {
+                return -this.Largura;
+            }
+        }
     }
 }

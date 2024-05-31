@@ -19,6 +19,8 @@ namespace ConsoleSnake
             SnakeCharacter = new Snake(CreateSnake());
             CreateFood();
 
+            GameRunning = true;
+
             render.Render();
         }
     
@@ -27,6 +29,7 @@ namespace ConsoleSnake
         public Random Rand { get; }
         private Snake SnakeCharacter { get; set; }
         private Renderer render;
+        public Boolean GameRunning { get; set; }
 
         private void CreateEmpty()
         {
@@ -88,21 +91,31 @@ namespace ConsoleSnake
             return nextPosition;
         }
 
-        public void MoveSnake()
+        public void MoveSnake(char key)
         {
+            ChangeDirection(key);
+
             Position nextPos = NextPosition();
 
             if (nextPos.Altura >= CanvasSize || nextPos.Altura < 0 || nextPos.Largura >= CanvasSize || nextPos.Largura < 0)
             {
+                GameRunning = false;
                 return;
             }
 
-            switch (canvasTypes[nextPos.Altura, nextPos.Largura])
+            CanvasType nextCanvasType = canvasTypes[nextPos.Altura, nextPos.Largura];
+
+            if (nextPos.Altura == SnakeCharacter.Size.Last().Altura && nextPos.Largura == SnakeCharacter.Size.Last().Largura)
+            {
+                nextCanvasType = CanvasType.Empty;
+            }
+
+            switch (nextCanvasType)
             {
                 case CanvasType.Empty:
                     SnakeCharacter.Size.Insert(0, new Position(nextPos.Altura, nextPos.Largura));
-                    canvasTypes[nextPos.Altura, nextPos.Largura] = CanvasType.Snake;
                     canvasTypes[SnakeCharacter.Size.Last().Altura, SnakeCharacter.Size.Last().Largura] = CanvasType.Empty;
+                    canvasTypes[nextPos.Altura, nextPos.Largura] = CanvasType.Snake;
                     SnakeCharacter.Size.RemoveAt((SnakeCharacter.Size.Count - 1));
                     break;
 
@@ -112,14 +125,17 @@ namespace ConsoleSnake
                     CreateFood();
                     break;
                 case CanvasType.Snake:
-                    return;
+                    GameRunning = false;
                     break;
             }
+
             render.Render();
         }
 
         public void ChangeDirection(char key)
         {
+            Position oldDirection = SnakeCharacter.currentDirection;
+
             switch (key)
             {
                 case 'a':
@@ -134,6 +150,11 @@ namespace ConsoleSnake
                 case 'd':
                     SnakeCharacter.currentDirection = SnakeCharacter.Direction.right;
                     break;
+            }
+
+            if(oldDirection.OppositeHeigth == SnakeCharacter.currentDirection.Altura && oldDirection.OppositeWidth == SnakeCharacter.currentDirection.Largura)
+            {
+                SnakeCharacter.currentDirection = oldDirection;
             }
         }
     }

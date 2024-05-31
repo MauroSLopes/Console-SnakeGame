@@ -13,7 +13,7 @@ namespace ConsoleSnake
             Size = snake;
             Direction = new Directions();
 
-            currentDirection = Direction.right;
+            currentDirection = Direction.up;
         }
 
         public List<Position> Size { get; set; }
